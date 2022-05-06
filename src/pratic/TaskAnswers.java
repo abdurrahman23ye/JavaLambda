@@ -1,10 +1,15 @@
 package pratic;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TaskAnswers {
 
@@ -22,7 +27,7 @@ public class TaskAnswers {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //  List<Integer> sayi = new ArrayList<>(Arrays.asList(2,4,8,34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
         //  List<Integer> sayi2 = new ArrayList<>(Arrays.asList(2,1));
 
@@ -257,12 +262,14 @@ public class TaskAnswers {
 
 
 
-        Universite u01 = new Universite("bogazici", "matematik", 571, 93);
+    /*    Universite u01 = new Universite("bogazici", "matematik", 571, 93);
         Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
         Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
         Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
         Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
         List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
+
+     */
 
 
 
@@ -374,10 +381,149 @@ public class TaskAnswers {
 
          */
 
-        //task 11-->Ogrenci sayilari 1071'dan az olan universite'lerin en kucuk notOrt'unu bulunuz.
+        /*task 11-->Ogrenci sayilari 1071'dan az olan universite'lerin en kucuk notOrt'unu bulunuz.
 
         System.out.println(unv.stream().
                 filter(t -> t.getOgrSayisi() < 1071).mapToDouble(t -> t.getNotOrt()).reduce(Double::min));
+
+         */
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+
+        //Day-5
+
+        //TASK 01 --> Structured Programming ve Functional Programming ile 1'den x'e kadar tamsayilari toplayan bir program create ediniz.
+        //TASK 02 --> 1'den x'e kadar cift tamsayilari toplayan bir program create ediniz.
+        //TASK 03 --> Ilk x pozitif cift sayiyi toplayan program  create ediniz.
+        //TASK 04 --> Ilk X pozitif tek tamsayiyi toplayan programi  create ediniz.
+        //TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
+        //TASK 06 --> Istenilen bir sayinin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
+        //TASK 07 --> Istenilen bir sayinin faktoriyelini hesaplayan programi  create ediniz.
+        //TASK 08 --> Istenilen bir sayinin  x. kuvvetini ekrana yazdiran programi  create ediniz.
+
+        /*
+
+
+       int x=5;
+        //TASK 01 --> Structured Programming ve Functional Programming ile 1'den x'e kadar tamsayilari toplayan bir program create ediniz.
+
+
+        System.out.println(IntStream.rangeClosed(1, x).sum());
+
+        //TASK 02 --> 1'den x'e kadar cift tamsayilari toplayan bir program create ediniz.
+
+
+        System.out.println(IntStream.rangeClosed(1, x). filter(Utulities::ciftSayilarDondurInt).sum());
+
+        //TASK 03 --> Ilk x pozitif cift sayiyi toplayan program  create ediniz.
+
+        System.out.println(IntStream.rangeClosed(1, 2*x).filter(Utulities::ciftSayilarDondurInt).sum());
+
+        System.out.println(IntStream.iterate(2, t -> t + 2).limit(x).sum());
+
+        //TASK 04 --> Ilk X pozitif tek tamsayiyi toplayan programi  create ediniz.
+
+        System.out.println(IntStream.iterate(1, t -> t + 2).limit(x).sum());
+
+        //TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
+
+        IntStream.iterate(2,t->t*2).limit(x).forEach(Utulities::boslukluYazdirInt);
+
+        //TASK 06 --> Istenilen bir sayinin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
+        int istenilenSayi=3;
+
+        IntStream.iterate(3,t->t*istenilenSayi).limit(x).forEach(Utulities::boslukluYazdirInt);
+
+        //TASK 07 --> Istenilen bir sayinin faktoriyelini hesaplayan programi  create ediniz.
+
+        System.out.println(IntStream.rangeClosed(1, x).reduce(1, (a, y) -> a*y));
+
+        //TASK 08 --> Istenilen bir sayinin  x. kuvvetini ekrana yazdiran programi  create ediniz.
+
+        System.out.println(IntStream.iterate(istenilenSayi, t -> t*istenilenSayi).limit(x).reduce(1, (a, y) -> y));
+
+         */
+
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+        //  **************************************************************************************************
+
+        //Day-6
+
+        //TASK 01 --> haluk.txt dosyasini okuyunuz.(Console'a yazdiriniz)
+        //TASK 02 --> haluk.txt dosyasini buyuk harflerle okuyunuz.(Console'a buyuk harflerle yazdiriniz)
+        //TASK 03 --> haluk.txt dosyasindaki ilk satiri kucuk harflerle yazdiriniz.
+        //TASK 04 --> haluk.txt dosyasinda "basari" kelimesinin kac satirda gectiginiz yazdiriniz
+        //TASK 05 --> haluk.txt dosyasindaki farkli kelimeleri  yazdiriniz.
+        //TASK 06 --> haluk.txt dosyasindaki tum kelimeleri natural order  yazdiriniz.
+        //TASK 07 --> haluk.txt dosyasinda "basari" kelimesinin kac kere gectigini buyuk harf kucuk harf bagımsız yaziniz.
+        //TASK 08 --> haluk.txt dosyasinda "a" harfi gecen kelimelerin sayisini ekrana yazdiran programi yaziniz
+        //TASK 09 --> haluk.txt dosyasinda icinde "a" harfi gecen kelimeleri yazdiriniz
+        //TASK 10 --> haluk.txt dosyasinda kac /farklı harf kullanildigini yazdiriniz
+        //TASK 11 --> haluk.txt dosyasinda kac farkli kelime kullanildigini yazdiriniz
+
+        //TASK 01 --> haluk.txt dosyasini okuyunuz.(Console'a yazdiriniz)
+
+        Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).forEach(Utulities::satirliYazdirString);
+
+        //TASK 02 --> haluk.txt dosyasini buyuk harflerle okuyunuz.(Console'a buyuk harflerle yazdiriniz)
+
+        Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(String::toUpperCase).forEach(Utulities::satirliYazdirString);
+
+        //TASK 03 --> haluk.txt dosyasindaki ilk satiri kucuk harflerle yazdiriniz.
+        Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(String::toLowerCase).limit(1).forEach(Utulities::satirliYazdirString);
+        //TASK 04 --> haluk.txt dosyasinda "basari" kelimesinin kac satirda gectiginiz yazdiriniz
+
+        System.out.println(Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).filter(t -> t.contains("basari")).count());
+
+        //TASK 05 --> haluk.txt dosyasindaki farkli kelimeleri  yazdiriniz.
+      Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t->t.split(" ")).
+              flatMap(Arrays::stream).distinct().forEach(Utulities::boslukluYazdirString);
+
+        System.out.println();
+
+
+
+        //TASK 06 --> haluk.txt dosyasindaki tum kelimeleri natural order  yazdiriniz.
+
+        Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t->t.split(" ")).
+                flatMap(Arrays::stream).sorted().forEach(Utulities::boslukluYazdirString);
+        System.out.println();
+
+        //TASK 07 --> haluk.txt dosyasinda "basari" kelimesinin kac kere gectigini buyuk harf kucuk harf bagımsız yaziniz.
+
+        System.out.println(Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t -> t.split(" ")).
+                flatMap(Arrays::stream).filter(t -> t.equalsIgnoreCase("basari")).count());
+
+
+        //TASK 08 --> haluk.txt dosyasinda "a" harfi gecen kelimelerin sayisini ekrana yazdiran programi yaziniz
+
+        System.out.println(Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t -> t.split(" ")).
+                flatMap(Arrays::stream).filter(t -> t.contains("a")).count());
+
+
+        //TASK 09 --> haluk.txt dosyasinda icinde "a" harfi gecen kelimeleri yazdiriniz
+
+        Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t -> t.split(" ")).
+                flatMap(Arrays::stream).filter(t -> t.contains("a")).forEach(Utulities::satirliYazdirString);
+
+        //TASK 10 --> haluk.txt dosyasinda kac /farklı harf kullanildigini yazdiriniz
+
+        System.out.println(Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t -> t.split("")).
+                flatMap(Arrays::stream).
+                map(t -> t.replaceAll("\\W", "").replaceAll("\\s", "").replaceAll("\\d", "")).
+                distinct().count());
+
+
+        //TASK 11 --> haluk.txt dosyasinda kac farkli kelime kullanildigini yazdiriniz
+
+        System.out.println(Files.lines(Paths.get("src/lambdaTutorial/haluk.txt")).map(t -> t.split(" ")).
+                flatMap(Arrays::stream).distinct().count());
 
 
     }
